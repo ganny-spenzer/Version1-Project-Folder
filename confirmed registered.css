@@ -1,0 +1,19 @@
+*{
+    font-family:'Montserrat' ;
+}
+
+.img-confirmation-register{
+    
+    align-content: center;
+    transform: translateX(30rem);
+/* margin-left: 50%;    */
+font-weight: 700;
+
+font-size: 20px;
+}
+a{
+    color: green;
+}
+p{
+    transform: translateX(-5rem);
+}

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./regis.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <style>
+        body {
+
+            font-size: 22px;
+        }
+    </style>
+
+    <title>Registeration</title>
+    <script>
+        // window.onload = function () {
+        //     alert("okay")
+        // }
+        function validateFirstname() {
+            var regex = /^[A-Za-z]+$/;
+            var errorFirstName = document.getElementById("userfst");
+            var Fname = document.getElementById("regfname").value;
+            if (!Fname.match(regex)) {
+                errorFirstName.innerHTML = "Enter the name (only alphabets)";
+                return false;
+            }
+            errorFirstName.innerHTML = "";
+            return true;
+        }
+
+        function validateLastname() {
+            var regex = /^[A-Za-z]+$/;
+            var errorLastName = document.getElementById("userlst");
+            var Lname = document.getElementById("reglname").value;
+            if (!Lname.match(regex)) {
+                errorLastName.innerHTML = "Enter the name (only alphabets)";
+                return false;
+            }
+            errorLastName.innerHTML = "";
+            return true;
+        }
+
+        function validatePhoneNo() {
+            var errorPhone = document.getElementById("phn");
+            var phone = document.getElementById("regphn").value;
+            if (!phone.match("^[6-9]{1}[0-9]{9}$")) {
+                errorPhone.innerHTML = "Enter a vaild phone number..";
+                return false;
+            }
+            errorPhone.innerHTML = "";
+            return true;
+        }
+        function validateEmail() {
+            var errorEmail = document.getElementById("eml");
+            var email = document.getElementById("regeml").value;
+            if (!email.match("^[a-z]+[._]{0,1}[0-9a-z]+[@][a-z]+[.][a-z]{2,3}([.][a-z]{2,3}){0,1}$")) {
+                errorEmail.innerHTML = "Enter a vaild Email Address..";
+                return false;
+            }
+            errorEmail.innerHTML = "";
+            return true;
+        }
+
+        function validatePassword() {
+            let passCondition = document.getElementById("passContainer");
+            passCondition.style.visibility = "visible";
+            passCondition.style.display = "block";
+            let passWord = document.getElementById("regpas").value;
+            let minLength = document.getElementById("passjs1");
+            let maxlength = document.getElementById("passjs2");
+            let upper = document.getElementById("passjs3");
+            let lower = document.getElementById("passjs4");
+            let number = document.getElementById("passjs5");
+            let symbol = document.getElementById("passjs6");   
+            
+
+if(passWord.match(/[0-9]/))
+{
+number.style.color = 'green';
+}
+else{
+    number.style.color = 'red';
+}
+
+if(passWord.match(/[A-Z]/))
+{
+    upper.style.color="green";
+}
+else{
+    upper.style.color="red";
+}
+
+if(passWord.match(/[a-z]/))
+{
+    lower.style.color="green";
+}
+else{
+    lower.style.color="red";
+}
+
+if(passWord.length>6)
+{
+    minLength.style.color="green";
+}
+else{
+    minLength.style.color="red";
+}
+
+if(passWord.length <10)
+{
+    maxlength.style.color="green";
+}
+else{
+    maxlength.style.color="red";
+}
+
+if(passWord.match(/[!\@\#\$\%\^\&\*\(\)\+\{\}\"\'\,\.\?]/))
+{
+    symbol.style.color="green";
+}
+else{
+    symbol.style.color="red";
+}
+
+
+
+}
+// need to be Done
+function validateConfirmPassword()
+{
+  
+    let ErrorConfirmed = document.getElementById("conpas");
+    let confirmPassword = document.getElementById("regconpas").value;
+    let passWord =document.getElementById("regpas").value;
+     if(!confirmPassword.match(passWord))
+     {
+        // alert("Fuck you");
+        ErrorConfirmed.innerHTML = "Enter a same password";
+        return false;
+
+     }
+     
+     ErrorConfirmed.innerHTML = "";
+      return true;
+}
+    </script>
+</head>
+<div class="menu_bar">
+    <img src="./photos/Just.png" alt="img"  width="16%" height="70%" id="imge">
+
+    <ul>
+        <li> <a href="main.html"><i class="fa-solid fa-mobile-screen-button"></i> Home</a> </li>
+        </li>
+        <li> <a href="about.html">About</a> </li>
+        <li> <a href="#">More<i class="fas fa-caret-down"></i></a>
+            <div class="dropdown_menu">
+                <ul>
+                    <li><a href="#">New Offers</a></li>
+                    <li><a href="upcoming.html">Upcoming </a></li>
+                    <li><a href="#"><i class="fa-solid fa-phone"></i> Contact</a></li>
+                    <li><a href="#"> Dashboard</a></li>
+                </ul>
+            </div>
+        </li>
+        <li> <a href="./User login.html">Login
+            </a>
+    </ul>
+    <!-- </nav> -->
+</div>
+<div class="reg-main-grid">
+    <div class="main-grid-0">
+        <img src="./photos/register cartoon 2.jpg" height="450rem" width="470rem" alt="img">
+    </div>
+    <div class="main-reg">
+        <form>
+            <h2 id="reg-namehd">Registration Form</h2>
+            <div class="reg-fn">
+                <input type="text" id="regfname" onkeyup="validateFirstname()" placeholder="First Name" required>
+                <p id="userfst" style="position:absolute; color:red;  font-size: 10px; padding-left:110px ;"></p>
+            </div>
+            <div class="reg-ln">
+                <input type="text" id="reglname" onkeyup="validateLastname()" placeholder="Last Name" required>
+                <p id="userlst" style="position:absolute; color:red;  font-size: 10px; padding-left:110px ;"></p>
+            </div>
+            <div class="reg-dob">
+                <input type="date" id="regdob" placeholder="mm/dd/yyyy" required>
+            </div>
+            <div class="reg-phone">
+                <input type="tel" maxlength="10" id="regphn" onkeyup="validatePhoneNo()" name="regphn"
+                    placeholder="Phone Number" required>
+                <p id="phn" style="position:absolute; color:red;  font-size: 10px; padding-left:110px ;"></p>
+            </div>
+            <div class="reg-email">
+                <input type="email" id="regeml" name="regeml" onkeyup="validateEmail()" placeholder="Enter Email">
+                <p id="eml" style="position:absolute; color:red;  font-size: 10px; padding-left:110px ;"></p>
+            </div>
+            <div class="regpas">
+                <input type="text" id="regpas" onkeyup="validatePassword()" name="regpas" placeholder="Create Password"
+                    required>
+                <!-- <p id="pas" style="position:absolute; color:red;  font-size: 10px; padding-left:100px ;"></p> -->
+                <div id="passContainer">
+                    <ul>
+                        <li id="passjs1">Length should greater than 6</li>
+                        <li id="passjs2">Length should less than 10</li>
+                        <li id="passjs3">Should be one Uppercase</li>
+                        <li id="passjs4">Should be one Lowercase</li>
+                        <li id="passjs5">Should be one Number</li>
+                        <li id="passjs6">Should be one Symbol</li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="regconpas">
+                <input type="text" id="regconpas" onkeyup="validateConfirmPassword()" name="regconpas"
+                    placeholder="Confirm Password" required>
+                <p id="conpas" style="position:absolute; color:red;  font-size: 10px; padding-left:110px ;"></p>
+            </div>
+            <div class="regbtn">
+                <button id="btnreg" onclick="regcheck()"> <span id="btnregspn"> Register</span></button>
+            </div>
+        </form>
+    </div>
+    <div class="reg-grid-2">
+        <img src="./photos/Registeration cartoon.png" width="410rem" id="regcrtn1" height="520rem" alt="img">
+    </div>
+</div>
+
+<!-- 
+    <footer>
+        <p>@Copyright reserved By <span>Ganesh M</span></p>
+    </footer> -->
+
+</body>
+
+</html>

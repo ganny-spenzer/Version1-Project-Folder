@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="User login.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" />
+    <style>
+        body {
+            font-size: 22px;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="menu_bar">
+        <img src="./photos/Just.png" alt="img"  width="16%" height="70%" id="imge">
+        <!-- <nav> -->
+        <ul>
+            <li> <a href="#"><i class="fa-solid fa-mobile-screen-button"></i> Home</a> </li>
+
+            </li>
+            <li> <a href="#">About</a> </li>
+            <li> <a href="#">More<i class="fas fa-caret-down"></i></a>
+                <div class="dropdown_menu">
+                    <ul>
+                        <li><a href="#">New Offers</a></li>
+                        <li><a href="#">Upcoming </a></li>
+                        <li><a href="#"><i class="fa-solid fa-phone"></i> Contact</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li> <a href="#" id="highlight2">Login
+            </a> 
+        </ul>
+    </div>
+   
+         <br><br> <br>
+    <div class="log-main-grid">
+        <div class="log-main-grid-0">
+            <img src="./photos/login cartoon 1.jpg" height="450rem" id="logcrtn2" width="470rem" alt="img">
+        </div>
+        <div class="main-log">
+            <form  method="post" name="form" onsubmit="return userverify()" >
+                <h2 id="log-namehd">Login</h2>
+                <div class="login-username">
+                    <input type="email" id="loginname" name="loginname" onkeyup="validateEmail()" placeholder="Email">
+                    <p id="emlerror"></p>
+                </div>
+                <div class="login-password">
+                    <input type="password" id="loginpassword" name="loginpassword" onkeyup="passvalid()" placeholder="Password">
+                    <p id="passworderror"> </p>
+                </div>
+                <div class="forget-pass">
+                    <a href="#" id="forgetanchor">Forgot Password?</a> <br>
+                    <a href="regi.html"  id="forgetanchor">New User?</a>
+                </div>
+                <div class="logbtn">
+                    <button type="submit" id="btnlog"> <span id="btnlogspn"> Login</span></button>
+                </div>
+            </form>
+        </div>
+        <div class="log-grid-2">
+            <img src="./photos/login cartoon 2.jpg" width="435rem" id="logcrtn1" height="300rem" alt="img">
+        </div>
+    </div>
+</body>
+<script>
+    //  window.onload = function(){
+    //         setTimeout(sessionExpired, 30000);
+    //     }
+
+    //     function sessionExpired(){
+    //         window.open("admin error.html"); 
+    //     }
+    var loginame=document.getElementById("loginname");
+    var logipassword=document.getElementById("loginpassword");
+   
+    
+    function userverify(){
+      if(  validateEmail()==true &&  passvalid()==true ){
+        // window.location.href="E:\Project Folder\Project-Folder\main.html";
+        alert("hell");
+            return true;
+      } 
+        
+    }
+    
+       
+    // function emailvalid()   {
+
+    //     if(loginame.value=="")
+    //     {
+    //         alert("Enter Your Email");
+    //         return false;
+    //     }
+    //     return true;
+    // }
+
+    function validateEmail() {
+            var errorEmail = document.getElementById("emlerror");
+            var email = document.getElementById("loginname").value;
+            if (!email.match("^[a-z]+[._]{0,1}[0-9a-z]+[@][a-z]+[.][a-z]{2,3}([.][a-z]{2,3}){0,1}$")) {
+                errorEmail.innerHTML = '<span style="color:red;font-size:10px;font-style: normal; font-family:Geneva, sans-serif;">Enter a vaild Email Address..</span>';
+                return false;
+            }
+            errorEmail.innerHTML = "";
+            return true;
+        }
+
+    function passvalid(){
+        var crtusername="gannyspenzer007@gmail.com";
+        var crtpassword="ganesh12";
+
+        if(logipassword.value==""){
+            document.getElementById("passworderror").innerHTML="Enter your Password";
+            return false;
+        }
+        else if(logipassword.value.length<6 || logipassword.value.length>10){
+            document.getElementById("passworderror").innerHTML ='<span style="color:red;font-size:10px;font-style: normal; font-family:Geneva, sans-serif;">Enter a password within a limit of greater than 6 and less than 10 </span>';
+            return false;
+        }   
+        else if(loginame.value!=crtusername || logipassword.value!=crtpassword)
+        {            
+            document.getElementById("passworderror").innerHTML='<span style="color:red;font-size:10px;font-style: normal; font-family:Geneva, sans-serif;">Error Username or Password</span>';
+            return false;
+        }
+        else if(logipassword.value==crtpassword)
+        {
+            document.getElementById("passworderror").innerHTML='';
+        }
+        else{
+            return true;
+        }
+        
+       
+
+    }
+</script>
+
+</html> 
